@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { CSSProperties } from 'react';
 
 // Сообщаем вебпаку, что этот файл использует это изображение.
 import plane from 'src/images/plane.png';
@@ -6,9 +7,13 @@ import { Text } from 'components/text';
 
 import styles from './Article.module.scss';
 
-export const Article = () => {
+type ArticleProps = {
+	appliedStyles: CSSProperties;
+};
+
+export const Article = ({ appliedStyles }: ArticleProps) => {
 	return (
-		<article className={clsx(styles.article)}>
+		<article className={clsx(styles.article)} style={appliedStyles}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
 				Портрет Западной Швейцарии
 			</Text>
