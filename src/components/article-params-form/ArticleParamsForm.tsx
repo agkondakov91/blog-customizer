@@ -68,7 +68,7 @@ export const ArticleParamsForm = ({
 		setLocalState(localState);
 	};
 
-	const handleApplyStyles = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleApplyStyles = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		applyStyles();
 		setIsMenuOpen(false);
@@ -89,7 +89,7 @@ export const ArticleParamsForm = ({
 					[styles.container_open]: isMenuOpen,
 				})}
 				ref={menuRef}>
-				<form className={styles.form}>
+				<form className={styles.form} onSubmit={handleApplyStyles}>
 					<Text as={'h2'} size={31} weight={800} uppercase={true}>
 						Задайте параметры
 					</Text>
@@ -127,11 +127,7 @@ export const ArticleParamsForm = ({
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' onClick={handleResetForm} />
-						<Button
-							title='Применить'
-							type='submit'
-							onClick={handleApplyStyles}
-						/>
+						<Button title='Применить' type='submit' />
 					</div>
 				</form>
 			</aside>
